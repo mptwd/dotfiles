@@ -1,0 +1,98 @@
+alias vimrc='vim ~/.vimrc'
+
+
+# ---------------------------- Aliases --------------------------- #
+
+alias rm='\rm --preserve-root'
+alias ls='ls --color=always --group-directories-first'
+alias tree='tree -v'
+alias grep='grep --color'
+
+
+alias pd='pushd'
+
+alias vi='vim'
+alias vd='nvim -d'
+
+alias l='ls -avf'
+alias l='ls -CF'
+# alias ll='ls -Ahls'
+alias ll='ls -alF'
+alias la='ls -A'
+alias lg='ll | less'
+
+# some more ls aliases
+
+function cd () { 
+if [ -z "$1" ] 
+then
+builtin cd
+else
+builtin cd "$*" && ls;
+fi 
+}
+
+alias cp='cp --sparse=always --preserve=timestamps'
+
+
+alias g='git'
+alias ga='g add'
+alias gs='g status'
+alias gch='g checkout'
+alias glog='g log --oneline --graph --decorate -20'
+alias gl='git log ––graph ––pretty=format:"%Cred%h%Creset %Cgreen(%cd) %C(bold blue)<%an>%Creset %s -%C(yellow)%d%Creset"'
+alias gsc='git commit -S -m'
+alias gc='git commit -m'
+alias gd='git diff'
+alias gls='git lg'
+
+alias gp='git pull'
+alias gps='git push'
+
+#alias gcw='gcc -Wall -Wextra'
+
+# ---------------------------- PS1 --------------------------- #
+# Variables: colors, reset and symbols
+bash_prompt () {
+	local 	ORANGE='\[\033[0;33m\]'
+	local 	PURPLE='\[\033[0;35m\]'
+	local 	CYAN='\[\033[0;36m\]'
+	local 	GREEN='\[\033[0;32m\]'
+	local 	RED='\[\033[0;31m\]'
+	local 	DARK_GREY='\[\033[1;30m\]'
+	local 	NC='\[\e[0m\]'
+	local 	UR_CURVED_DASH="\[\033[0;37m\]\342\224\214" # up right curved dash
+	local 	DR_CURVED_DASH="\[\033[0;37m\]\342\224\224" # down right curved dash (short)
+	local 	FLAT_DASH="\342\224\200"
+	local 	CROSS_MARK="\342\234\227"
+	# git branch, return the branch name
+	git_ps1() {
+			local b="$(git symbolic-ref HEAD 2>/dev/null)";
+			if [ -n "$b" ]; then
+					local FLAT_DASH="\342\224\200";
+					local DARK_GREY="\033[1;30m";
+					local NC="\e[0m";
+					local b="${b##refs/heads/}";
+					echo -e "\033[00m on \033[01;31m($b)$NC";
+			fi
+	}
+
+	# Prompt
+	if [[ ${EUID} == 1000 ]]; then
+		#PS1="$UR_CURVED_DASH$FLAT_DASH\$([[ \$? != 0 ]] && echo \"[$RED$CROSS_MARK$NC]$FLAT_DASH\")[$ORANGE\u$NC@$CYAN\h$NC]$FLAT_DASH[$GREEN\w$NC]\$(git_ps1)\n$DR_CURVED_DASH$FLAT_DASH>$NC "
+        PS1="\[\033[01;32m\]\u@\h\[\033[00m\] in \[\033[01;34m\]\w\$(git_ps1)\[\033[00m\]\n\$ "
+	else
+		PS1="$UR_CURVED_DASH$FLAT_DASH\$([[ \$? != 0 ]] && echo \"[$RED$CROSS_MARK$NC]$FLAT_DASH\")[$PURPLE\u$NC@$CYAN\h$NC]$FLAT_DASH[$GREEN\w$NC]\${git_ps1}\n$DR_CURVED_DASH$FLAT_DASH>$NC "
+	fi
+}
+
+bash_prompt
+unset bash_prompt
+
+# ---------------------------- Others --------------------------- #
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+export PATH=$PATH:/usr/local/go/bin
