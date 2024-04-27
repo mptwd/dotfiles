@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# launch this script to automaticaly stow the files
+
 # make sure we have pulled in and updated any submodules
 git submodule init
 git submodule update
