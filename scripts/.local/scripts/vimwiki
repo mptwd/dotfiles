@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# creates a new tmux session named vimwiki, or attaches to it if exists, and launch vimwiki in nvim
+
+if ! tmux has-session -t "vimwiki" 2> /dev/null; then
+  # create the session
+  tmux new-session -s "vimwiki" -c "~/vimwiki" -d 
+  # launch vimwiki inside
+  tmux send -t "vimwiki" "nvim -c VimwikiIndex" ENTER 
+fi
+
+tmux switch-client -t "vimwiki"
