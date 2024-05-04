@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-languages=$(echo "golang c cpp typescript rust python java javascript lua nodejs" | tr " " "\n")
-core_utils=$(echo "find xargs sed awk mv ls cat less" | tr " " "\n")
+languages=$(cat "$HOME/.config/tmux/tmux-cht-languages")
+core_utils=$(cat "$HOME/.config/tmux/tmux-cht-command")
 selected=$(echo -e "$languages\n$core_utils" | fzf)
 
 read -p "query: " query

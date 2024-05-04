@@ -4,8 +4,9 @@
 
 if ! tmux has-session -t "vimwiki" 2> /dev/null; then
   # create the session
-  tmux new-session -s "vimwiki" -c "~/vimwiki" -d 
+  tmux new-session -s "vimwiki" -c "home/marc/vimwiki/" -d 
   # launch vimwiki inside
+  tmux send -t "vimwiki" "cd /home/marc/vimwiki/" ENTER
   tmux send -t "vimwiki" "nvim -c VimwikiIndex" ENTER 
 fi
 
