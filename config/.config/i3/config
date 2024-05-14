@@ -282,3 +282,4 @@ bindsym XF86AudioPrev exec playerctl previous
 
 exec firefox
 exec spotify
+exec obsidian
