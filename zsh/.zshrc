@@ -103,3 +103,25 @@ source $ZSH/oh-my-zsh.sh
 
 source $HOME/.zsh_profile
 export PATH="$PATH:$HOME/.local/scripts"
+
+function cd () {
+  if [ -z "$1" ]
+  then builtin cd
+  else builtin cd "$*" && ls;
+  fi
+}
+
+alias cp='cp --sparse=always --preserve=timestamps'
+
+# git aliases
+alias g='git'
+alias ga='g add'
+alias gs='g status'
+alias gch='g checkout'
+alias glog='g log --online --graph --decorate -20'
+alias gl='git log --graph --pretty=fromat:"%Cred%h%Creset %Cgreen(%cd) %C(bold blue)<%an>%Creset %s -%C(yellow)%d%Creset"'
+alias gc='g commit -m'
+alias gd='g diff'
+
+alias gp='g pull'
+alias gps='g push'
