@@ -2,6 +2,6 @@
 	email = marcportwood@gmail.com
 	name = Marc Portwood
 [core]
-	editor = nvim~
+	editor = vim~
 [pull]
 	rebase = false
