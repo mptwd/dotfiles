@@ -48,12 +48,12 @@ module-margin = 1
 separator = |
 separator-foreground = ${colors.disabled}
 
-font-0 = JetBrainsMono Nerd Font:pixelsize=16;5
-font-1 = Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:pixelsize=16;5
+font-0 = pango:jet brains sans mono:pixelsize=16;4
+font-1 = nerdfont;2
+font-2 = fontawesome;2
 
-modules-left = xworkspaces cpu temperature memory filesystem
-modules-center = xwindow date
-modules-right = battery pulseaudio backlight wlan eth 
+modules-left = xworkspaces xwindow
+modules-right = filesystem pulseaudio backlight battery memory cpu temperature wlan eth date
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -148,76 +148,22 @@ interval = 25
 
 mount-0 = /
 
-label-mounted = " %free%"
+label-mounted = %{F#F0C674}%mountpoint%%{F-} %percentage_used%%
 
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.disabled}
 
 [module/pulseaudio]
-;type = internal/pulseaudio
-
-;format-volume-prefix = "VOL "
-;format-volume-prefix-foreground = ${colors.primary}
-;format-volume = <label-volume>
-
-;label-volume = %percentage%%
-
-;label-muted = muted
-;label-muted-foreground = ${colors.disabled}
-
 type = internal/pulseaudio
 
-; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
-; If not, uses default sink
-; sink = alsa_output.pci-0000_12_00.3.analog-stereo
+format-volume-prefix = "VOL "
+format-volume-prefix-foreground = ${colors.primary}
+format-volume = <label-volume>
 
-; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
-; Default: true
-use-ui-max = true
+label-volume = %percentage%%
 
-; Interval for volume increase/decrease (in percent points)
-; Default: 5
-interval = 5
-
-; Reverses the increment/decrement on scroll event. Set this to true if you are
-; using natural scrolling option on your touchpad.
-; New in version 3.7.0
-; Default: false
-reverse-scroll = false
-
-; Available tags:
-;   <label-volume> (default)
-;   <ramp-volume>
-;   <bar-volume>
-format-volume = <ramp-volume> <label-volume>
-
-; Available tags:
-;   <label-muted> (default)
-;   <ramp-volume>
-;   <bar-volume>
-;format-muted = <label-muted>
-
-; Available tokens:
-;   %percentage% (default)
-;   %decibels%
-;label-volume = %percentage%%
-
-; Available tokens:
-;   %percentage% (default)
-;   %decibels%
 label-muted = muted
-label-muted-foreground = #666
-
-; Only applies if <ramp-volume> is used
-ramp-volume-0 = 
-ramp-volume-1 = 
-ramp-volume-2 = 
-
-; Right and Middle click
-click-right = pavucontrol
-; click-middle = 
-
-
+label-muted-foreground = ${colors.disabled}
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -234,7 +180,8 @@ label-indicator-background = ${colors.secondary}
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = "RAM "
+format-prefix-foreground = ${colors.primary}
 label = %percentage_used:2%%
 
 [module/cpu]
@@ -243,7 +190,7 @@ interval = 2
 warn-percentage = 1
 
 format-prefix = " "
-format-prefix-font = 2
+format-prefix-foreground = ${colors.primary}
 
 ; Available tags:
 ;   <label> (default)
@@ -464,14 +411,14 @@ format-low = <label-low> <animation-low>
 ;   %percentage_raw%
 ;   %time%
 ;   %consumption% (shows current charge rate in watts)
-label-charging = %percentage:3%%
+label-charging = %percentage:2%%
 
 ; Available tokens:
 ;   %percentage% (default) - is set to 100 if full-at is reached
 ;   %percentage_raw%
 ;   %time%
 ;   %consumption% (shows current discharge rate in watts)
-label-discharging = %percentage:3%%
+label-discharging = %percentage:2%%
 
 ; Available tokens:
 ;   %percentage% (default) - is set to 100 if full-at is reached
@@ -484,7 +431,7 @@ label-full = Fully charged
 ;   %time%
 ;   %consumption% (shows current discharge rate in watts)
 ; New in version 3.6.0
-label-low = %percentage:3%%
+label-low = %percentage:2%%
 
 ; Only applies if <ramp-capacity> is used
 ramp-capacity-0 = 
@@ -574,14 +521,11 @@ format = <ramp> <label>
 label = %percentage:2%%
 
 ; Only applies if <ramp> is used
-ramp-0 = 󰃚
-ramp-0-font = 2
-ramp-1 = 󰃛
-ramp-1-font = 2
-ramp-2 = 󰃜
-ramp-2-font = 2
-ramp-3 = " "
-ramp-3-font = 2
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
 
 ; Only applies if <bar> is used
 bar-width = 10
