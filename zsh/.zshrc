@@ -125,3 +125,5 @@ alias gd='g diff'
 
 alias gp='g pull'
 alias gps='g push'
+
+source ~/rose-pine-man/rose-pine-man.zsh
