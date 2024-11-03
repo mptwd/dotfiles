@@ -145,3 +145,4 @@ export TA_LIBRARY_PATH=$/home/marc/talib/ta-lib/lib
 export TA_INCLUDE_PATH=$/home/marc/talib/ta-lib/include
 
 source ~/.cheezy
+. "$HOME/.cargo/env"
