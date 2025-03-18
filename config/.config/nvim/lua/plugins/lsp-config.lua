@@ -29,6 +29,12 @@ return {
         "lua_ls",
         "rust_analyzer",
         "clangd",
+        "html",
+        "cssls",
+        "clangd",
+        "yamlls",
+        "jsonls",
+        "marksman",
       },
       handlers = {
         function(server_name) -- default handler (optional)
@@ -49,6 +55,35 @@ return {
                 }
               }
             }
+          }
+          lspconfig.jsonls.setup {
+            capabilities = capabilities,
+          }
+          lspconfig.cssls.setup {
+            capabilities = capabilities,
+          }
+          lspconfig.yamlls.setup {
+            capabilities = capabilities,
+          }
+          lspconfig.html.setup {
+            capabilities = capabilities,
+            filetype = {
+              "templ",
+              "html",
+              "css",
+              "javascriptreact",
+              "typescriptreact",
+              "javascript",
+              "typescript",
+              "jsx",
+              "tsx",
+            },
+          }
+          lspconfig.clangd.setup {
+            capabilities = capabilities,
+          }
+          lspconfig.marksman.setup {
+            capabilities = capabilities,
           }
         end,
       }
