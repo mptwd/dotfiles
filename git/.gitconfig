@@ -1,7 +1,0 @@
-[user]
-	email = marcportwood@gmail.com
-	name = Marc Portwood
-[core]
-	editor = vim~
-[pull]
-	rebase = false
