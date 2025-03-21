@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# This is the default setup of a new tmux session opened whith tmux-sessionizer.
+# It creates another window to do terminal stuff in, and opens nvim in the first window.
+
+tmux rename-window "nvim"
+tmux neww -d
+nvim .

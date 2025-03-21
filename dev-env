@@ -58,11 +58,10 @@ copy_file() {
 }
 
 copy_dir env/.config $XDG_CONFIG_HOME
-#copy_dir env/.local $HOME/.local
+copy_dir env/.local $HOME/.local
 
-#copy_file tmux-sessionizer/tmux-sessionizer $HOME/.local/scripts/tmux-sessionizer
-#copy_file env/.zsh_profile $HOME/.zsh_profile
-#copy_file env/.zshrc $HOME/.zshrc
+copy_file env/.zsh_profile $HOME
+copy_file env/.zshrc $HOME
+copy_file env/.ready-tmux $HOME
 #copy_file env/.xprofile $HOME/.xprofile
-#copy_file env/.tmux-sessionizer $HOME/.tmux-sessionizer
-#copy_file dev-env $HOME/.local/scripts/dev-env
+copy_file dev-env $HOME/.local/scripts
