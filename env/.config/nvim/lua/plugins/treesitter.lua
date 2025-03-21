@@ -14,6 +14,8 @@ return {
         "gomod",
         "gowork",
         "gosum",
+        "latex",
+        "bibtex",
       },
       highlight = { enable = true },
       indent = { enable = true },
