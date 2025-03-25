@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Install Go
+sudo rm -rf /usr/local/go && tar -C /usr/local -xzf go1.24.1.linux-amd64.tar.gz

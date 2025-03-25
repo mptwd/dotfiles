@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# install i3 and usefull other stuff
+sudo apt install i3 taskwarrior polybar rofi

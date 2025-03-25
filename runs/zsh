@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# install zsh
+sudo apt install zsh
+# change shell
+chsh -s 'which zsh'
+# install oh-my-zsh
+curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+# install autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $HOME/.oh-my-zsh/plugins/zsh-autosuggestions

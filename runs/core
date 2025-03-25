@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Install usefull stuff
+sudo apt install doxygen fzf docker cxxtest tldr ripgrep bat
+
+
